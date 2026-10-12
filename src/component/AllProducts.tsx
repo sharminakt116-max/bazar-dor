@@ -101,7 +101,7 @@ export default function AllProductsSection({
     .slice(0, 6);
 
   return (
-    <main className="mx-auto w-full max-w-7xl space-y-8 bg-[#f0f6f0] px-4 py-6 md:px-8">
+    <main className="mx-auto w-full max-w-7xl space-y-8 px-4 py-6 md:px-8">
       {/* Section A: Top 6 risers */}
       <section>
         <h2 className="mb-4 text-lg font-extrabold text-gray-800">
