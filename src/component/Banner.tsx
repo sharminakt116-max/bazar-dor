@@ -7,7 +7,7 @@ const Banner = () => {
   });
 
   return (
-    <div className="my-4 mx-auto w-full max-w-7xl rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
+    <div className="my-4 mx-auto w-full max-w-7xl rounded-2xl border  border-gray-100 p-6 shadow-sm md:p-8">
       <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
   
         <div className="max-w-2xl space-y-4">
