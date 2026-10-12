@@ -1,18 +1,8 @@
 
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
+import type { Product } from "../type/product";
 
-interface Product {
-  id: number;
-  nameBn: string;
-  image: string;
-  today: number;
-  unit: string;
-  change: {
-    pct: number;
-    dir: "up" |"down" |"flat";
-  };
-}
 
 const Marquee = async () => {
   const response = await fetch(

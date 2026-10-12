@@ -6,6 +6,9 @@ import React from 'react';
 import NavLinks from './NavLinks';
 
 const Header = () => {
+  // const date = new Date().toLocaleDateString('bn-BD', {
+  //   dateStyle: 'full'
+  // });
   const date = new Date().toLocaleDateString('bn-BD', {
     dateStyle: 'full'
   });
