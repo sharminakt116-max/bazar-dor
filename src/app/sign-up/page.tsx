@@ -4,7 +4,7 @@ import React from "react";
 
 const SignupPage = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-200 px-4 py-10">
+    <div className="flex min-h-screen  justify-center bg-gray-200 px-4 py-10">
       <form className="w-full max-w-md space-y-4">
         {/* Heading */}
         <div className="mb-5 text-center">
