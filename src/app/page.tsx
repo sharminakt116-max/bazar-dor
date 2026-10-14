@@ -1,7 +1,7 @@
-
 import Banner from "@/component/Banner";
-import AllProductsSection from "../component/AllProducts";
+import AllProductsSection from "@/component/AllProducts";
 import type { Product } from "@/type/product";
+import { Suspense } from "react";
 
 async function getProducts(): Promise<Product[]> {
   try {
@@ -25,13 +25,26 @@ async function getProducts(): Promise<Product[]> {
   }
 }
 
-export default async function Home() {
+async function ProductsContent() {
   const products = await getProducts();
 
+  return <AllProductsSection products={products} />;
+}
+
+export default function Home() {
   return (
     <main className="min-h-screen bg-[#f0f4ef]">
       <Banner />
-      <AllProductsSection products={products} />
+
+      <Suspense
+        fallback={
+          <div className="py-10 text-center text-gray-600">
+            পণ্য লোড হচ্ছে...
+          </div>
+        }
+      >
+        <ProductsContent />
+      </Suspense>
     </main>
   );
 }

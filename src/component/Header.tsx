@@ -6,6 +6,7 @@ import React from 'react';
 import NavLinks from './NavLinks';
 import UserInfo from './UserInfo';
 import TodayDate from './TodayDate';
+import { Suspense } from "react";
 
 const Header = () => {
   
@@ -35,7 +36,9 @@ const Header = () => {
         
       </div>
       </div>
-      <NavLinks/>
+     <Suspense fallback={<div className="h-10" />}>
+  <NavLinks />
+</Suspense>
      </header>
 
   );
