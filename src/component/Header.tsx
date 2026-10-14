@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import NavLinks from './NavLinks';
+import UserInfo from './UserInfo';
 
 const Header = () => {
   // const date = new Date().toLocaleDateString('bn-BD', {
@@ -33,17 +34,8 @@ const Header = () => {
             <p className="text-sm text-gray-600">{date}</p>
           </div>
         </div>
-
+<UserInfo/>
         
-        <div className="flex items-center gap-4">
-          <button className="btn btn-ghost text-neutral-700 transition-colors hover:text-red-700">
-            সাইন ইন
-          </button>
-          <button className="btn rounded-xl bg-green-700 px-5 py-2 text-white shadow-md transition hover:bg-green-800">
-            সাইন আপ
-          </button>
-        </div>
-
       </div>
       </div>
       <NavLinks/>
