@@ -24,34 +24,36 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="bn"
-      data-theme="light"
-      className={`${notoSerifBengali.className} h-full antialiased`}
-    >
-      <body className="flex min-h-full flex-col">
-        <Header />
+  <html
+    lang="bn"
+    data-theme="light"
+    className={`${notoSerifBengali.className} min-h-full antialiased`}
+  >
+    <body className="flex min-h-screen flex-col">
+      <Header />
 
-        <Suspense
-          fallback={
-            <p className="py-3 text-center">
-              বাজারদর লোড হচ্ছে...
-            </p>
-          }
-        >
-          <Marquee />
-        </Suspense>
+      <Suspense
+        fallback={
+          <p className="py-3 text-center">
+            বাজারদর লোড হচ্ছে...
+          </p>
+        }
+      >
+        <Marquee />
+      </Suspense>
 
+      <main className="flex-1">
         {children}
+      </main>
 
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          theme="colored"
-        />
-       <Footer/>
-      </body>
-       
-    </html>
-  );
-}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        theme="colored"
+      />
+
+      <Footer />
+    </body>
+  </html>
+);
+};
