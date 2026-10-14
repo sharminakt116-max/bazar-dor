@@ -17,7 +17,7 @@ const UserInfo = () => {
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Click outside করলে dropdown বন্ধ হবে
+  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (

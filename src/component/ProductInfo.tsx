@@ -80,7 +80,7 @@ export default function ProductInfo({ product }: Props) {
           </div>
         </div>
 
-        {/* ডানপাশ: আজকের দাম */}
+       
         <div className="min-w-[150px] w-full rounded-xl border border-gray-100 bg-[#f7f8f6] p-4 text-center md:w-auto md:text-right">
           <p className="text-[11px] font-medium text-gray-500">
             আজকের দাম
