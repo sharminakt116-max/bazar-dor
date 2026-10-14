@@ -1,19 +1,16 @@
 'use client';
 import Image from "next/image";
+import TodayDate from "./TodayDate";
 
 const Banner = () => {
-       const date = new Date().toLocaleDateString('bn-BD', {
-    dateStyle: 'full'
-  });
+      
 
   return (
-    <div className="my-4 mx-auto w-full max-w-7xl rounded-2xl border  border-gray-100 p-6 shadow-sm md:p-8">
+    <div className="my-4 mx-auto w-full max-w-7xl rounded-2xl border bg-white  border-gray-100 p-6 shadow-sm md:p-8">
       <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
   
         <div className="max-w-2xl space-y-4">
-          <div className="inline-block rounded-full bg-emerald-50 px-3.5 py-1.5 text-xs font-semibold text-emerald-700">
-            {date}
-          </div>
+          <TodayDate />
 
           <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
             আজকের বাজারের দাম এক নজরে

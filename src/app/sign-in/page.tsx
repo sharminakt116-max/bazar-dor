@@ -79,7 +79,7 @@ const SignInPage = () => {
           </p>
         </div>
 
-        {/* Form Fields */}
+      
         <fieldset className="fieldset w-full rounded-box border border-gray-300 bg-white p-5">
           <label className="label">ইমেইল</label>
 

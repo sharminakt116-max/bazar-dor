@@ -29,9 +29,9 @@ export default async function Home() {
   const products = await getProducts();
 
   return (
-    <>
+    <main className="min-h-screen bg-[#f0f4ef]">
       <Banner />
       <AllProductsSection products={products} />
-    </>
+    </main>
   );
 }

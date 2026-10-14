@@ -5,14 +5,10 @@ import Link from 'next/link';
 import React from 'react';
 import NavLinks from './NavLinks';
 import UserInfo from './UserInfo';
+import TodayDate from './TodayDate';
 
 const Header = () => {
-  // const date = new Date().toLocaleDateString('bn-BD', {
-  //   dateStyle: 'full'
-  // });
-  const date = new Date().toLocaleDateString('bn-BD', {
-    dateStyle: 'full'
-  });
+  
 
   return (
   
@@ -31,7 +27,8 @@ const Header = () => {
           />
           <div>
             <h1 className="text-2xl font-semibold">বাজার দর</h1>
-            <p className="text-sm text-gray-600">{date}</p>
+            
+            <TodayDate />
           </div>
         </div>
 <UserInfo/>
