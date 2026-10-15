@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
+import { DiGithubBadge } from "react-icons/di";
 const SignupPage = () => {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -58,7 +59,22 @@ const SignupPage = () => {
     console.error("Google sign-up error:", error);
   }
 };
-  
+ const handleGithubSignUp = async () => {
+  try {
+    const { error } = await authClient.signIn.social({
+      provider: "github",
+      callbackURL: "/",
+    });
+
+    if (error) {
+      console.error("GitHub sign-in error:", error);
+      toast.error(error.message || "GitHub দিয়ে সাইন আপ করা যায়নি!");
+    }
+  } catch (error) {
+    console.error("GitHub signup error:", error);
+    toast.error("সমস্যা হয়েছে। আবার চেষ্টা করো!");
+  }
+};
 
   
   return (
@@ -128,7 +144,7 @@ const SignupPage = () => {
              <span className="mx-4 shrink-0 text-xs text-gray-500"> অথবা</span>
           <div className="flex-grow border-t border-gray-300"></div>
           </div>
-
+<div className="flex w-full gap-3">
                <button
             type="button"
             onClick={handleGoogleSignUp}
@@ -138,7 +154,15 @@ const SignupPage = () => {
           
             Google দিয়ে চালিয়ে যান
           </button>
-
+          <button
+                      type="button"
+                      onClick={handleGithubSignUp}
+                      className="flex w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-700 hover:bg-gray-50"
+                    >
+                      <DiGithubBadge size={22} />
+                      GitHub দিয়ে চালিয়ে যান
+                    </button>
+</div>
           <p className="mt-3 text-center text-sm text-gray-600">
             অ্যাকাউন্ট আছে?{" "}
             <a href="/sign-in" className="font-semibold text-green-700 hover:underline">
