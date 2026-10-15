@@ -66,7 +66,34 @@ export default function ProfilePage() {
       </div>
     );
   }
+  // User সাইন ইন না করলে
+  if (!user) {
+    return (
+      <main className="flex min-h-screen flex-col items-center justify-center gap-4 bg-[#f3f4f1] px-4">
+        <h1 className="text-xl font-bold text-gray-900">
+          আপনি সাইন ইন করেননি
+        </h1>
 
+        <p className="text-sm text-gray-600">
+          প্রোফাইল দেখতে প্রথমে সাইন ইন করুন।
+        </p>
+
+        <Link
+          href="/sign-in"
+          className="rounded-xl bg-green-700 px-6 py-3 text-sm font-medium text-white hover:bg-green-800"
+        >
+          সাইন ইন করুন
+        </Link>
+
+        <Link
+          href="/"
+          className="text-sm text-gray-600 hover:text-green-700"
+        >
+          ← হোম পেজে ফিরে যান
+        </Link>
+      </main>
+    );
+  }
 
 
   return (

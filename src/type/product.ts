@@ -5,6 +5,7 @@ export interface Product {
   name?: string;
   image?: string;
   unit?: string;
+  categoryNameBn?: string;
   today?: number;
   yesterday?: number;
   lastWeek?: number;
@@ -17,9 +18,13 @@ export interface Product {
   };
 
   markets: {
-  market: string;
-  division: string;
-  min: number;
-  max: number;
-}[];
+    market: string;
+    division: string;
+    min: number;
+    max: number;
+  }[];
+}
+
+export interface ProductProps {
+  products: Product[];
 }

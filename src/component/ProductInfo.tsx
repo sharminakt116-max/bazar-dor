@@ -62,7 +62,7 @@ export default function ProductInfo({ product }: Props) {
             </h1>
 
             <p className="mt-1 text-xs text-gray-500">
-              প্রতি {unit} · {product.categoryNameBn ?? "চাল"}
+              {/* প্রতি {unit} · {product.categoryNameBn ?? "চাল"} */}{product.categoryNameBn ?? "পণ্যের বিভাগ"}
             </p>
 
             <p className="mt-2 text-xs text-gray-600">
