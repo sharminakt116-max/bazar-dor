@@ -39,8 +39,9 @@ async function ProductsContent() {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f0f4ef]">
-      <Banner />
+    <main className="min-h-screen bg-[#f0f4ef] ">
+     
+      <Banner/>
 
       <Suspense
         fallback={

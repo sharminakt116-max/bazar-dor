@@ -6,10 +6,11 @@ const Banner = () => {
       
 
   return (
-    <div className="my-4 mx-auto w-full max-w-7xl rounded-2xl border bg-white  border-gray-100 p-6 shadow-sm md:p-8">
+      <div className="mx-auto w-full max-w-7xl px-4 py-4">
+   <div className="w-full rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:p-8">
       <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
   
-        <div className="max-w-2xl space-y-4">
+        <div className="max-w-2xl space-y-6">
           <TodayDate />
 
           <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
@@ -42,8 +43,8 @@ const Banner = () => {
         </div>
       </div>
     </div>
+    </div>
   );
 };
 
 export default Banner;
-
