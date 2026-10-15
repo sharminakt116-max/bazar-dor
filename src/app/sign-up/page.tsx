@@ -45,7 +45,7 @@ const SignupPage = () => {
     }
   };
  
-  const handleGoogleSignUp = async () => {
+const handleGoogleSignUp = async () => {
   try {
     const { error } = await authClient.signIn.social({
       provider: "google",
@@ -53,13 +53,16 @@ const SignupPage = () => {
     });
 
     if (error) {
-      console.error("Google sign-in error:", error);
+      console.error("Google sign-up error:", error);
+      toast.error(error.message || "Google দিয়ে সাইন আপ করা যায়নি!");
     }
   } catch (error) {
     console.error("Google sign-up error:", error);
+    toast.error("সমস্যা হয়েছে। আবার চেষ্টা করো!");
   }
 };
- const handleGithubSignUp = async () => {
+
+const handleGithubSignUp = async () => {
   try {
     const { error } = await authClient.signIn.social({
       provider: "github",
@@ -67,15 +70,14 @@ const SignupPage = () => {
     });
 
     if (error) {
-      console.error("GitHub sign-in error:", error);
+      console.error("GitHub sign-up error:", error);
       toast.error(error.message || "GitHub দিয়ে সাইন আপ করা যায়নি!");
     }
   } catch (error) {
-    console.error("GitHub signup error:", error);
+    console.error("GitHub sign-up error:", error);
     toast.error("সমস্যা হয়েছে। আবার চেষ্টা করো!");
   }
 };
-
   
   return (
     <div className="flex min-h-screen  justify-center bg-gray-200 px-4 py-10">
