@@ -48,19 +48,39 @@ const SignInPage = () => {
       setIsLoading(false);
     }
   };
-
-  const handleGoogleSignIn = async () => {
-    const data = await authClient.signIn.social({
+const handleGoogleSignIn = async () => {
+  try {
+    const { error } = await authClient.signIn.social({
       provider: "google",
+      callbackURL: "/",
     });
-    
-  };
 
-  const handleGithubSignIn = async () => {
-    const data = await authClient.signIn.social({
+    if (error) {
+      console.error("Google sign-in error:", error);
+      toast.error(error.message || "Google দিয়ে সাইন ইন করা যায়নি!");
+    }
+  } catch (error) {
+    console.error("Google sign-in error:", error);
+    toast.error("সমস্যা হয়েছে। আবার চেষ্টা করো!");
+  }
+};
+
+const handleGithubSignIn = async () => {
+  try {
+    const { error } = await authClient.signIn.social({
       provider: "github",
+      callbackURL: "/",
     });
-  };
+
+    if (error) {
+      console.error("GitHub sign-in error:", error);
+      toast.error(error.message || "GitHub দিয়ে সাইন ইন করা যায়নি!");
+    }
+  } catch (error) {
+    console.error("GitHub sign-in error:", error);
+    toast.error("সমস্যা হয়েছে। আবার চেষ্টা করো!");
+  }
+};
 
   return (
     <div className="flex min-h-screen justify-center bg-gray-200 px-4 py-10">
