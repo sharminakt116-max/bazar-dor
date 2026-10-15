@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="mt-auto border-t border-gray-200/60 bg-white py-6 text-xs text-gray-500">
+    <footer className="mt-auto border-t border-gray-200 bg-white py-6 text-xs text-gray-500">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
         <p>বাজার দর — প্রয়োজনীয় পণ্যের দাম এক নজরে।</p>
 
