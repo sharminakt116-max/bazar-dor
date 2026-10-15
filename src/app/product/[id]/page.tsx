@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { toast } from "react-toastify";
@@ -14,7 +15,7 @@ import ProductPrice from "@/component/ProductPrice";
 const toBanglaNumber = (value: number) =>
   value.toLocaleString("bn-BD");
 
-export default function ProductDetailPage() {
+function ProductDetailContent() {
   const params = useParams();
   const id = String(params.id);
   const router = useRouter();
@@ -27,7 +28,6 @@ export default function ProductDetailPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  
   useEffect(() => {
     if (isPending || session || redirectedRef.current) return;
 
@@ -48,19 +48,18 @@ export default function ProductDetailPage() {
 
       try {
         const response = await fetch(
-          `https://api.abcz.workers.dev/api/bazardor/products/${(id)}`,
+          `https://api.abcz.workers.dev/api/bazardor/products/${id}`,
           { cache: "no-store" }
         );
-
-        const data = await response.json();
-
-        console.log("Product ID:", id);
-        console.log("API Status:", response.status);
-        console.log("API Response:", data);
 
         if (!response.ok) {
           throw new Error(`API Error: ${response.status}`);
         }
+
+        const data = await response.json();
+
+        console.log("Product ID:", id);
+        console.log("API Response:", data);
 
         const result = data.product ?? data.data ?? data;
 
@@ -95,7 +94,6 @@ export default function ProductDetailPage() {
     };
   }, [id, session, isPending]);
 
-
   if (isPending) {
     return (
       <main className="min-h-screen bg-gray-50 p-6">
@@ -106,12 +104,10 @@ export default function ProductDetailPage() {
     );
   }
 
-
   if (!session) {
     return null;
   }
 
-  // Product loading
   if (loading) {
     return (
       <main className="min-h-screen bg-gray-50 p-6">
@@ -122,7 +118,6 @@ export default function ProductDetailPage() {
     );
   }
 
- 
   if (error || !product) {
     return (
       <main className="min-h-screen bg-gray-50 p-6">
@@ -147,7 +142,6 @@ export default function ProductDetailPage() {
   return (
     <main className="min-h-screen bg-gray-50 px-4 py-8">
       <div className="mx-auto max-w-5xl space-y-6">
-        {/* Breadcrumb navigation */}
         <nav className="flex flex-wrap items-center gap-2 text-xs text-gray-500">
           <Link href="/" className="hover:text-green-700">
             হোম
@@ -156,10 +150,10 @@ export default function ProductDetailPage() {
           <span>›</span>
 
           <Link
-            href={`/category/${product.categorySlug ?? "chal"}`}
+            href={`/category/${product.category ?? "chal"}`}
             className="hover:text-green-700"
           >
-            {product.categoryNameBn ?? "চাল"}
+            {product.categoryNameBn ?? "পণ্যের বিভাগ"}
           </Link>
 
           <span>›</span>
@@ -169,13 +163,10 @@ export default function ProductDetailPage() {
           </span>
         </nav>
 
-  
         <ProductInfo product={product} />
 
-      
         <ProductPrice product={product} />
 
-      
         <section className="overflow-hidden rounded-2xl border bg-white p-5">
           <h2 className="mb-4 text-xl font-bold">
             বাজারভিত্তিক আজকের দাম
@@ -235,10 +226,23 @@ export default function ProductDetailPage() {
             </p>
           )}
         </section>
-
-       
-       
       </div>
     </main>
+  );
+}
+
+export default function ProductDetailPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen bg-gray-50 p-6">
+          <p className="animate-pulse text-center text-gray-500">
+            পণ্যের পেজ লোড হচ্ছে...
+          </p>
+        </main>
+      }
+    >
+      <ProductDetailContent />
+    </Suspense>
   );
 }

@@ -5,6 +5,7 @@ export interface Product {
   name?: string;
   image?: string;
   unit?: string;
+  category: string;
   categoryNameBn?: string;
   today?: number;
   yesterday?: number;

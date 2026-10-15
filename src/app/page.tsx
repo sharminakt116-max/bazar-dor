@@ -1,7 +1,9 @@
+
 import Banner from "@/component/Banner";
 import AllProductsSection from "@/component/AllProducts";
 import type { Product } from "@/type/product";
 import { Suspense } from "react";
+import { connection } from "next/server";
 
 async function getProducts(): Promise<Product[]> {
   try {
@@ -13,12 +15,14 @@ async function getProducts(): Promise<Product[]> {
     );
 
     if (!response.ok) {
-      throw new Error("Products fetch failed");
+      throw new Error(`Products fetch failed: ${response.status}`);
     }
 
-    const data: Product[] = await response.json();
+    const data = await response.json();
 
-    return Array.isArray(data) ? data : [];
+    return Array.isArray(data)
+      ? (data as Product[])
+      : [];
   } catch (error) {
     console.error("Products API Error:", error);
     return [];
@@ -26,6 +30,8 @@ async function getProducts(): Promise<Product[]> {
 }
 
 async function ProductsContent() {
+  await connection();
+
   const products = await getProducts();
 
   return <AllProductsSection products={products} />;

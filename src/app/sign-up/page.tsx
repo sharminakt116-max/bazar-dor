@@ -43,12 +43,22 @@ const SignupPage = () => {
       toast.error("সমস্যা হয়েছে। আবার চেষ্টা করো!");
     }
   };
-  const handleGoogleSignUp=async()=>{
-        const data=await authClient.signUp.social({
-        provider:"google",
-      })
-      console.log(data)
+ 
+  const handleGoogleSignUp = async () => {
+  try {
+    const { error } = await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
+
+    if (error) {
+      console.error("Google sign-in error:", error);
     }
+  } catch (error) {
+    console.error("Google sign-up error:", error);
+  }
+};
+  
 
   
   return (
