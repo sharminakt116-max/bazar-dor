@@ -237,12 +237,7 @@ export default function ProductDetailPage() {
         </section>
 
        
-        <Link
-          href="/"
-          className="inline-block font-medium text-green-700 hover:text-green-900"
-        >
-          ← হোম পেজে ফিরে যাও
-        </Link>
+       
       </div>
     </main>
   );

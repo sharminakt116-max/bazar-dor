@@ -253,7 +253,14 @@ export default function CategoryPage({ params }: PageProps) {
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
+        <Link
+          href="/"
+          className="inline-block font-medium text-green-700 py-6 hover:text-green-900"
+        >
+          ← হোম পেজে ফিরে যাও
+        </Link>
       </div>
+       
     </main>
   );
 }
